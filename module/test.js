@@ -1,0 +1,1 @@
+console.log("--- LE FICHIER DE TEST EST BIEN CHARGÉ ---");
