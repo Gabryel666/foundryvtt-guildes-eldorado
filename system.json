@@ -14,9 +14,12 @@
       "url": "https://github.com/Gabryel666"
     }
   ],
+  "main": "module/guildes-eldorado.js",
+  "esmodules": [],
   "styles": [
     "css/guildes-eldorado.css"
   ],
+  "packs": [],
   "languages": [
     {
       "lang": "fr",
@@ -24,15 +27,15 @@
       "path": "lang/fr.json"
     }
   ],
-  "packs": [],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "label": "Personnage"
+      }
+    }
+  },
   "socket": false,
   "url": "https://github.com/Gabryel666/foundryvtt-guildes-eldorado",
   "manifest": "https://raw.githubusercontent.com/Gabryel666/foundryvtt-guildes-eldorado/main/system.json",
-  "download": "https://github.com/Gabryel666/foundryvtt-guildes-eldorado/archive/refs/tags/v0.1.0.zip",
-
-  "actorTypes": [
-    "character"
-  ],
-  "main": "module/guildes-eldorado.js",
-  "esmodules": []
+  "download": "https://github.com/Gabryel666/foundryvtt-guildes-eldorado/archive/refs/tags/v0.1.0.zip"
 }
