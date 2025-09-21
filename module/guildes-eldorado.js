@@ -1,15 +1,26 @@
-// On importe la classe de base pour notre modèle de données
+// On importe nos classes personnalisées
+import { GuildesActor } from "./documents/actor.mjs";
 import { GuildesCharacterData } from "./data/GuildesCharacterData.mjs";
 
 /**
- * Initialisation du système.
+ * La classe principale du système de jeu Guildes : El Dorado.
  */
-Hooks.once("init", () => {
-  console.log("Guildes El Dorado | Initialisation du système");
+class GuildesElDorado extends foundry.abstract.System {
 
-  // On assigne notre modèle de données au type d'acteur "character".
-  CONFIG.Actor.systemDataModels.character = GuildesCharacterData;
+  /**
+   * Une fonction d'initialisation appelée par le hook "init".
+   */
+  _initialize() {
+    super._initialize();
 
-  // Optionnel mais bonne pratique : on peut aussi définir un label plus joli pour ce type d'acteur.
-  CONFIG.Actor.typeLabels.character = "Personnage";
-});
+    console.log("Guildes El Dorado | Initialisation via la Classe Système");
+
+    // On assigne nos classes personnalisées à la configuration de Foundry
+    CONFIG.Actor.documentClass = GuildesActor;
+    CONFIG.Actor.systemDataModels.character = GuildesCharacterData;
+    CONFIG.Actor.typeLabels.character = "Personnage";
+  }
+}
+
+// On enregistre notre classe système auprès de Foundry
+SYSTEM.register(GuildesElDorado);
