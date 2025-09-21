@@ -28,6 +28,9 @@
       "path": "lang/fr.json"
     }
   ],
+  "actorTypes": [
+    "character"
+  ],
   "socket": false,
   "url": "https://github.com/Gabryel666/foundryvtt-guildes-eldorado",
   "manifest": "https://raw.githubusercontent.com/Gabryel666/foundryvtt-guildes-eldorado/main/system.json",
