@@ -1,66 +1,42 @@
 # Système de Jeu "Guildes : El Dorado" pour Foundry VTT
 
-Ce dépôt contient le code source du système de jeu pour le jeu de rôle **Guildes : El Dorado**, développé pour la plateforme Foundry Virtual Tabletop (Version 13).
-
-Ce projet est en cours de développement. L'objectif est de fournir une implémentation fidèle et ergonomique des règles du jeu pour faciliter les parties en ligne.
+Ce dépôt contient le code source du système de jeu pour le jeu de rôle **Guildes : El Dorado**, développé pour Foundry Virtual Tabletop (v13+).
 
 ## 🏛️ Architecture du Système
 
-Ce système adopte une architecture modulaire et orientée concept, conçue pour être claire, maintenable et extensible. La structure des fichiers clés est la suivante :
+Ce système adopte une architecture modulaire et orientée concept. La structure est conçue pour être lue de manière hiérarchique, du point d'entrée général aux implémentations spécifiques.
+
+Le diagramme ci-dessous illustre cette hiérarchie.
 
 ```mermaid
-graph TD
-    subgraph Racine du Projet
-        A["system.json (Manifeste)"]
-        B["README.md (Ce fichier)"]
-    end
+graph LR
+    A["<b>system.json</b><br/><i>Manifeste du Système</i>"] --> B["<b>module/main.js</b><br/><i>Orchestrateur d'Initialisation</i>"];
+    B --> C["<b>/actors/</b><br/>Dossier du Concept 'Acteur'"];
+    C --> D["<b>actor.mjs</b><br/><i>Comportement Commun à TOUS les acteurs</i>"];
+    C --> E["<b>/character/</b><br/>Dossier du Type Spécifique 'Personnage'"];
+    E --> F["- data.mjs<br/>- sheet.mjs<br/>- sheet.html"];
 
-    subgraph "Dossier 'module' (Logique du Système)"
-        C["main.js (Point d'Entrée)"]
-        D["actors/"]
-        E["items/ (Futur)"]
-    end
-
-    subgraph "Dossier 'actors' (Concept Acteur)"
-        F["actor.mjs (Comportement Commun)"]
-        G["character/"]
-        H["pnj/ (Futur)"]
-    end
-    
-    subgraph "Dossier 'character' (Type d'Acteur Spécifique)"
-        I["data.mjs (Données)"]
-        J["sheet.mjs (Logique de la Fiche)"]
-        K["sheet.html (Apparence de la Fiche)"]
-    end
-
-    A --> C;
-    C --> F;
-    C --> I;
-    F --> J;
-    J --> K;
-    
-    D --- F & G & H;
-    G --- I & J & K;
+    style A fill:#222,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#444,stroke:#fff,stroke-width:1px,color:#fff
 ```
 
-### Description des Composants
+### Logique de la Hiérarchie
 
-*   **`system.json`**: Le manifeste du système. Il déclare les métadonnées, les types de documents (Acteurs, Objets) et les points d'entrée du code.
-*   **`module/main.js`**: Le cerveau du système. Ce fichier est chargé par Foundry et est responsable de l'initialisation et de l'enregistrement de toutes les classes personnalisées.
-*   **`module/actors/`**: Ce dossier contient tout le code relatif aux acteurs.
-    *   **`actor.mjs`**: Définit la classe de base `GuildesActor`, qui contient le comportement **commun** à tous les types d'acteurs (personnages, PNJ, etc.).
-    *   **`character/`**: Un dossier dédié au type d'acteur "personnage".
-        *   **`data.mjs`**: Définit le modèle de données (DataModel) spécifique aux personnages (caractéristiques, arts, etc.).
-        *   **`sheet.mjs`**: (À venir) Contiendra la logique de la fiche de personnage (gestion des événements, jets de dés...).
-        *   **`sheet.html`**: (À venir) Le fichier HTML qui définit la structure et l'apparence de la fiche de personnage.
+1.  **`system.json` (Le Manifeste)**
+    *   C'est la racine du projet. Il identifie le système et désigne `module/main.js` comme son unique point d'entrée logique.
 
-## 🚀 Installation pour le Développement
+2.  **`module/main.js` (L'Orchestrateur)**
+    *   Ce fichier est le chef d'orchestre. Il est appelé par Foundry et a pour mission de charger et d'enregistrer tous les concepts du système (Acteurs, Objets, etc.).
 
-1.  Clonez ce dépôt dans un dossier de travail local.
-2.  Créez un lien symbolique depuis le dossier `systems` de vos données utilisateur Foundry vers le dossier de ce projet.
-    ```cmd
-    mklink /D "C:\Chemin\Vers\Foundry\Data\systems\guildes-eldorado" "C:\Chemin\Vers\Votre\Projet\foundryvtt-guildes-eldorado"
-    ```
+3.  **`/actors/` (Le Concept "Acteur")**
+    *   Ce dossier regroupe tout le code relatif aux acteurs. Sa structure interne sépare le code partagé du code spécifique.
+    *   **`actor.mjs`**: Ce fichier définit le **comportement commun** (les fonctions de base) qui sera partagé par **tous** les types d'acteurs.
+    *   **`/character/`**: C'est un dossier d'implémentation **spécifique**. Chaque type d'acteur (personnage, pnj, créature...) aura son propre dossier.
+
+4.  **Contenu d'un Type Spécifique (ex: `/character/`)**
+    *   Ce dossier est autonome et contient les trois facettes d'un type d'acteur : ses **données** (`data.mjs`), la **logique** de sa fiche (`sheet.mjs`), et son **apparence** (`sheet.html`).
+
+Ce modèle garantit que pour ajouter un nouveau type d'acteur, il suffit de créer un nouveau dossier d'implémentation (ex: `/pnj/`) sur le modèle de `/character/`, sans perturber le reste de la structure.
 
 ## 🤝 Contribution
 
