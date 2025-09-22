@@ -38,11 +38,3 @@ Ce dépôt contient le code source du système de jeu pour le jeu de rôle **Gui
       L--> [...] (items/, etc.)
 
 ```
-
-## 🤝 Contribution
-
-Les contributions, rapports de bugs et suggestions sont les bienvenus. Veuillez ouvrir une "Issue" sur ce dépôt GitHub pour toute discussion.
-
-## 📜 Licence
-
-Ce projet est distribué sous la licence MIT. Voir le fichier `LICENSE` pour plus de détails.
