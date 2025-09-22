@@ -1,4 +1,4 @@
-# Système de Jeu "Guildes : El Dorado" pour Foundry VTT
+# Foundry VTT : Système Guildes El Dorado
 
 Ce dépôt contient le code source du système de jeu pour le jeu de rôle **Guildes : El Dorado**, développé pour Foundry Virtual Tabletop.
 
