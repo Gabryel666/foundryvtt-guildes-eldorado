@@ -1,47 +1,105 @@
+<!-- Fiche de personnage minimaliste pour Foundry v13 -->
 <form class="{{cssClass}}" autocomplete="off">
-
-  <!-- En-tête de la Fiche -->
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom du Personnage"/></h1>
-    </div>
+    <h1><input name="system.nom" type="text" value="{{document.system.nom}}" placeholder="Nom du personnage"/></h1>
   </header>
-
-  <!-- Corps de la Fiche -->
   <section class="sheet-body">
-
-    <h2>Caractéristiques</h2>
-    <div class="grid grid-2col">
-
-      <!-- Colonne des Caractéristiques Physiques -->
-      <div class="attributes-group">
-        <h3>Physiques</h3>
-        {{#each system.attributes.physical as |attribute key|}}
-          <div class="attribute">
-            <label class="attribute-label">{{attribute.label}}</label>
-            <div class="attribute-value">
-              <input type="number" name="system.attributes.physical.{{key}}" value="{{attribute.value}}" />
-            </div>
-          </div>
-        {{/each}}
-      </div>
-
-      <!-- Colonne des Caractéristiques Mentales -->
-      <div class="attributes-group">
-        <h3>Mentales</h3>
-        {{#each system.attributes.mental as |attribute key|}}
-          <div class="attribute">
-            <label class="attribute-label">{{attribute.label}}</label>
-            <div class="attribute-value">
-              <input type="number" name="system.attributes.mental.{{key}}" value="{{attribute.value}}" />
-            </div>
-          </div>
-        {{/each}}
-      </div>
-
+    <div>
+      <label>Points de vie :</label>
+      <input type="number" name="system.pv" value="{{document.system.pv}}" min="0" />
     </div>
-
+    <div class="attributes">
+      <h2>Caractéristiques</h2>
+      <div class="grid grid-2col">
+        <div class="attributes-group">
+          <h3>Physiques</h3>
+          <div class="attribute">
+            <label>Agile</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.physical.agile "system.attributes.physical.agile"}}}
+              <input type="number" name="system.attributes.physical.agile" value="{{document.system.attributes.physical.agile}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Fort</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.physical.fort "system.attributes.physical.fort"}}}
+              <input type="number" name="system.attributes.physical.fort" value="{{document.system.attributes.physical.fort}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Résistant</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.physical.resistant "system.attributes.physical.resistant"}}}
+              <input type="number" name="system.attributes.physical.resistant" value="{{document.system.attributes.physical.resistant}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Observateur</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.physical.observateur "system.attributes.physical.observateur"}}}
+              <input type="number" name="system.attributes.physical.observateur" value="{{document.system.attributes.physical.observateur}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+        </div>
+        <div class="attributes-group">
+          <h3>Mentales</h3>
+          <div class="attribute">
+            <label>Charmeur</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.mental.charmeur "system.attributes.mental.charmeur"}}}
+              <input type="number" name="system.attributes.mental.charmeur" value="{{document.system.attributes.mental.charmeur}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Rusé</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.mental.ruse "system.attributes.mental.ruse"}}}
+              <input type="number" name="system.attributes.mental.ruse" value="{{document.system.attributes.mental.ruse}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Savant</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.mental.savant "system.attributes.mental.savant"}}}
+              <input type="number" name="system.attributes.mental.savant" value="{{document.system.attributes.mental.savant}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+          <div class="attribute">
+            <label>Talentueux</label>
+            <div style="display: flex; align-items: center; gap: 0.5em;">
+              {{{dots document.system.attributes.mental.talentueux "system.attributes.mental.talentueux"}}}
+              <input type="number" name="system.attributes.mental.talentueux" value="{{document.system.attributes.mental.talentueux}}" min="1" max="6" style="width: 2.5em;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-
+  <script>
+    // Gestion des puces interactives pour chaque caractéristique
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.dots').forEach(function(group) {
+        group.addEventListener('click', function(e) {
+          if (!e.target.classList.contains('dot')) return;
+          const value = Number(e.target.dataset.value);
+          const attr = group.dataset.attr;
+          // Met à jour le champ correspondant dans le formulaire
+          const form = group.closest('form');
+          if (form) {
+            let input = form.querySelector(`[name="${attr}"]`);
+            if (!input) {
+              input = document.createElement('input');
+              input.type = 'hidden';
+              input.name = attr;
+              form.appendChild(input);
+            }
+            input.value = value;
+            // Soumet le formulaire pour sauvegarder la valeur
+            form.requestSubmit();
+          }
+        });
+      });
+    });
+  </script>
 </form>

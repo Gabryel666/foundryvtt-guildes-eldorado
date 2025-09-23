@@ -14,8 +14,9 @@
       "url": "https://github.com/Gabryel666"
     }
   ],
-  "main": "module/main.js",
-  "esmodules": [],
+  "esmodules": [
+    "module/main.mjs"
+  ],
   "styles": [
     "css/guildes-eldorado.css"
   ],

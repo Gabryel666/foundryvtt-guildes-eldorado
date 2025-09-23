@@ -1,0 +1,23 @@
+/* Style pour les puces de caractéristiques */
+.dots {
+	display: flex;
+	gap: 0.3em;
+	margin: 0.2em 0 0.5em 0;
+}
+.dot {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	border: 2px solid #888;
+	background: #fff;
+	display: inline-block;
+	cursor: pointer;
+	transition: background 0.2s, border 0.2s;
+}
+.dot.filled {
+	background: #2d8cff;
+	border-color: #2d8cff;
+}
+.dot:hover {
+	border-color: #444;
+}
