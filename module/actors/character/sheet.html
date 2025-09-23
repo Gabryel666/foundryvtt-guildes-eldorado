@@ -1,0 +1,47 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+  <!-- En-tête de la Fiche -->
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom du Personnage"/></h1>
+    </div>
+  </header>
+
+  <!-- Corps de la Fiche -->
+  <section class="sheet-body">
+
+    <h2>Caractéristiques</h2>
+    <div class="grid grid-2col">
+
+      <!-- Colonne des Caractéristiques Physiques -->
+      <div class="attributes-group">
+        <h3>Physiques</h3>
+        {{#each system.attributes.physical as |attribute key|}}
+          <div class="attribute">
+            <label class="attribute-label">{{attribute.label}}</label>
+            <div class="attribute-value">
+              <input type="number" name="system.attributes.physical.{{key}}" value="{{attribute.value}}" />
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      <!-- Colonne des Caractéristiques Mentales -->
+      <div class="attributes-group">
+        <h3>Mentales</h3>
+        {{#each system.attributes.mental as |attribute key|}}
+          <div class="attribute">
+            <label class="attribute-label">{{attribute.label}}</label>
+            <div class="attribute-value">
+              <input type="number" name="system.attributes.mental.{{key}}" value="{{attribute.value}}" />
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+    </div>
+
+  </section>
+
+</form>

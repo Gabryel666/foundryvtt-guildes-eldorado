@@ -8,32 +8,31 @@
 import { GuildesActor } from "./actors/actor.mjs";
 // Importe les plans de données à chaque type d'actor".
 import { CharacterData } from "./actors/character/data.mjs";
+// Importe la classe de la fiche SPÉCIFIQUE au type "personnage".
+import { CharacterSheet } from "./actors/character/sheet.mjs";
 
-/**
- * Classe principale du système de jeu.
- * Hérite de la classe de base `foundry.abstract.System`.
- */
+// Classe principale du système de jeu.
+
 class GuildesElDorado extends foundry.abstract.System {
 
-  /**
-   * Phase d'initialisation du système.
-   * Cette méthode sert à configurer les éléments fondamentaux du système.
-   */
     _initialize() {
-    // Appelle la méthode d'initialisation de la classe parente pour assurer le fonctionnement de base.
-    super._initialize();
+      super._initialize();
+      console.log("Guildes El Dorado | Initialisation du système");
 
-    // Message console
-    console.log("Guildes El Dorado | Initialisation du système");
+      CONFIG.Actor.documentClass = GuildesActor;
+      CONFIG.Actor.systemDataModels.character = CharacterData;
 
-    // Enregistre la classe `GuildesActor` comme classe de document par défaut pour tous les Acteurs.
-    // Désormais, chaque fois que Foundry créera un acteur, il utilisera cette classe au lieu de sa classe Actor de base.
-    CONFIG.Actor.documentClass = GuildesActor;
+      Actors.unregisterSheet("core", ActorSheet);
+      Actors.registerSheet("guildes-eldorado", CharacterSheet, { 
+      types: ["character"],
+      makeDefault: true,
+      label: "Fiche de Personnage Guildes"
+    });
 
-    // Enregistre le plan de données `CharacterData` par type d'acteur.
-    CONFIG.Actor.systemDataModels.character = CharacterData;
   }
 }
+
+
 
 // Enregistre la classe `GuildesElDorado` auprès du core de Foundry.
 // Active le système et déclenche l'appel à `_initialize`.
