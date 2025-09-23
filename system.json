@@ -14,7 +14,7 @@
       "url": "https://github.com/Gabryel666"
     }
   ],
-  "main": "module/guildes-eldorado.js",
+  "main": "module/main.js",
   "esmodules": [],
   "styles": [
     "css/guildes-eldorado.css"
@@ -30,7 +30,7 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "label": "Personnage"
+        "label": "ACTOR.TypeCharacter"
       }
     }
   },
