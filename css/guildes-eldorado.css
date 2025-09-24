@@ -1,3 +1,290 @@
+/* --- Simulation de puces avec input range (méthode ultra-fiable) --- */
+.dots-range {
+	position: relative;
+	width: 120px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	margin-right: 0.5em;
+}
+.dots-range input[type="range"] {
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 2;
+	cursor: pointer;
+}
+.dots-bar {
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	pointer-events: none;
+}
+.dots-bar::before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 4px;
+	background: transparent;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	z-index: 0;
+}
+.dots-bar {
+	z-index: 1;
+}
+.dots-bar {
+	/* Génère 6 puces avec box-shadow */
+}
+.dots-bar {
+	/* On va générer les puces avec ::after et box-shadow */
+}
+.dots-range input[type="range"]:not([value]) + .dots-bar::after,
+.dots-range input[type="range"][value="1"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #ede3c7, 40px 0 0 0 #ede3c7, 60px 0 0 0 #ede3c7, 80px 0 0 0 #ede3c7, 100px 0 0 0 #ede3c7;
+}
+.dots-range input[type="range"][value="2"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #c2b07a, 40px 0 0 0 #ede3c7, 60px 0 0 0 #ede3c7, 80px 0 0 0 #ede3c7, 100px 0 0 0 #ede3c7;
+}
+.dots-range input[type="range"][value="3"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #c2b07a, 40px 0 0 0 #c2b07a, 60px 0 0 0 #ede3c7, 80px 0 0 0 #ede3c7, 100px 0 0 0 #ede3c7;
+}
+.dots-range input[type="range"][value="4"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #c2b07a, 40px 0 0 0 #c2b07a, 60px 0 0 0 #c2b07a, 80px 0 0 0 #ede3c7, 100px 0 0 0 #ede3c7;
+}
+.dots-range input[type="range"][value="5"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #c2b07a, 40px 0 0 0 #c2b07a, 60px 0 0 0 #c2b07a, 80px 0 0 0 #c2b07a, 100px 0 0 0 #ede3c7;
+}
+.dots-range input[type="range"][value="6"] + .dots-bar::after {
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #c2b07a, 40px 0 0 0 #c2b07a, 60px 0 0 0 #c2b07a, 80px 0 0 0 #c2b07a, 100px 0 0 0 #c2b07a;
+}
+.dots-bar::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #c2b07a;
+	box-shadow: 0 0 0 0 #c2b07a, 20px 0 0 0 #ede3c7, 40px 0 0 0 #ede3c7, 60px 0 0 0 #ede3c7, 80px 0 0 0 #ede3c7, 100px 0 0 0 #ede3c7;
+	z-index: 1;
+	pointer-events: none;
+	border: 1.5px solid #c2b07a;
+	transition: box-shadow 0.15s;
+}
+/* --- Fiche de personnage moderne, format portrait --- */
+.fiche-portrait {
+	width: 420px !important;
+	height: 700px !important;
+	min-width: 420px !important;
+	min-height: 700px !important;
+	max-width: 420px !important;
+	max-height: 700px !important;
+	margin: 0 auto;
+	background: #f7f3e8;
+	border-radius: 18px;
+	box-shadow: 0 4px 24px rgba(120, 90, 40, 0.13);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid #e2d3b1;
+	font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.fiche-header {
+	display: flex;
+	align-items: center;
+	gap: 1.2em;
+	background: linear-gradient(90deg, #f3e7c6 0%, #f7f3e8 100%);
+	padding: 1.2em 1.2em 0.7em 1.2em;
+	border-bottom: 2px solid #e2d3b1;
+	box-shadow: 0 2px 8px #e2d3b144;
+}
+.fiche-header .profile-img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 12px;
+	border: 2.5px solid #c2b07a;
+	background: #f7f3e8;
+	box-shadow: 0 2px 8px #c2b07a33;
+}
+.fiche-header .header-fields {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.7em;
+}
+.fiche-header h1 {
+	font-size: 1.5em;
+	margin: 0;
+	font-weight: 700;
+	color: #7a5a2a;
+	letter-spacing: 0.02em;
+	text-shadow: 0 1px 0 #f7f3e8, 0 2px 2px #e2d3b1;
+}
+.fiche-header .pv-block {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	font-size: 1.1em;
+	background: #f3e7c6;
+	border-radius: 6px;
+	padding: 0.2em 0.7em;
+	border: 1.5px solid #e2d3b1;
+	color: #7a5a2a;
+	box-shadow: 0 1px 2px #e2d3b122;
+}
+.fiche-header .pv-block input[type="number"] {
+	width: 3.5em;
+	font-size: 1.1em;
+	border-radius: 6px;
+	border: 1px solid #c2b07a;
+	background: #f7f3e8;
+	color: #7a5a2a;
+	padding: 0.2em 0.4em;
+}
+
+.fiche-body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 1.2em;
+	overflow: hidden;
+	background: linear-gradient(180deg, #f7f3e8 80%, #f3e7c6 100%);
+}
+
+/* Caractéristiques modernes */
+.attributes-modern {
+	margin-bottom: 1.2em;
+}
+.caracs-flex {
+	display: flex;
+	gap: 2em;
+}
+.carac-col {
+	flex: 1;
+}
+.caracs-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7em;
+}
+.carac-row {
+	display: flex;
+	align-items: center;
+	gap: 0.7em;
+}
+.carac-label {
+	width: 90px;
+	font-weight: 600;
+	color: #7a5a2a;
+	letter-spacing: 0.01em;
+}
+.dots {
+	display: flex;
+	gap: 0.2em;
+	cursor: pointer;
+}
+/* --- Puces façon Vampire : .dot et .dot.filled --- */
+.dot {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #ede3c7;
+	border: 1.5px solid #c2b07a;
+	display: inline-block;
+	transition: background 0.15s, border 0.15s;
+	margin-right: 2px;
+	box-shadow: 0 1px 2px #e2d3b122;
+	cursor: pointer;
+}
+.dot.filled {
+	background: #c2b07a;
+	border-color: #7a5a2a;
+	box-shadow: 0 0 4px #c2b07a55;
+}
+.dot:hover,
+.dot:focus {
+	filter: brightness(1.1);
+}
+.carac-row input[type="number"] {
+	width: 2.5em;
+	border-radius: 6px;
+	border: 1px solid #c2b07a;
+	background: #f7f3e8;
+	color: #7a5a2a;
+	padding: 0.1em 0.3em;
+	font-size: 1em;
+}
+
+/* Onglets modernes */
+.fiche-tabs {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background: #f7f3e8;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px #e2d3b144;
+	border: 1.5px solid #e2d3b1;
+	padding: 0.7em 0.7em 0.2em 0.7em;
+}
+.tabs {
+	display: flex;
+	gap: 1.2em;
+	border-bottom: 2px solid #e2d3b1;
+	margin-bottom: 0.7em;
+}
+.tabs .item {
+	padding: 0.4em 1.2em;
+	border-radius: 8px 8px 0 0;
+	background: none;
+	color: #a88c4a;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s, color 0.15s;
+	border-bottom: 2px solid transparent;
+}
+.tabs .item.active {
+	background: #f7f3e8;
+	color: #7a5a2a;
+	border-bottom: 2px solid #f7f3e8;
+}
+.tab-content {
+	flex: 1;
+	padding: 0.7em 0.2em 0.2em 0.2em;
+}
+.tab {
+	display: none;
+}
+.tab.active {
+	display: block;
+}
+
+/* Scrollbar discrète parchemin */
+.fiche-body, .tab-content {
+	scrollbar-width: thin;
+	scrollbar-color: #e2d3b1 #f7f3e8;
+}
+.fiche-body::-webkit-scrollbar, .tab-content::-webkit-scrollbar {
+	width: 7px;
+	background: #f7f3e8;
+}
+.fiche-body::-webkit-scrollbar-thumb, .tab-content::-webkit-scrollbar-thumb {
+	background: #e2d3b1;
+	border-radius: 6px;
+}
 /* Style pour les puces de caractéristiques */
 .dots {
 	display: flex;

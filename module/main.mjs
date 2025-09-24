@@ -6,18 +6,18 @@ import { CharacterData } from "./actors/character/data.mjs";
 import { CharacterSheet } from "./actors/character/sheet.mjs";
 
 Hooks.once("init", () => {
-  console.log("Guildes El Dorado | Initialisation du système");
-
-  // Helper Handlebars pour générer les puces interactives (dots)
+  // Helper Handlebars pour générer un tableau de nombres (range)
   if (typeof Handlebars !== 'undefined') {
-    Handlebars.registerHelper('dots', function(value, attr) {
-      let html = '';
-      for (let i = 1; i <= 6; i++) {
-        html += `<span class="dot${i <= value ? ' filled' : ''}" data-value="${i}" data-attr="${attr}"></span>`;
-      }
-      return new Handlebars.SafeString(html);
+    Handlebars.registerHelper('range', function(start, end) {
+      let arr = [];
+      for (let i = start; i <= end; i++) arr.push(i);
+      return arr;
     });
   }
+  console.log("Guildes El Dorado | Initialisation du système");
+
+
+  // (Nettoyé) Plus de chargement dynamique de partials : tout est dans le HTML principal.
 
   // Enregistre la classe d'acteur personnalisée
   CONFIG.Actor.documentClass = GuildesActor;

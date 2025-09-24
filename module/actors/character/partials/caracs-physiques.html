@@ -1,0 +1,39 @@
+<!-- Caractéristiques physiques, version moderne, puces interactives -->
+<div class="caracs-group">
+  <div class="carac-row">
+    <span class="carac-label">Agile</span>
+    <span class="dots" data-attr="system.attributes.physical.agile">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.physical.agile this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.physical.agile" value="{{document.system.attributes.physical.agile}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Fort</span>
+    <span class="dots" data-attr="system.attributes.physical.fort">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.physical.fort this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.physical.fort" value="{{document.system.attributes.physical.fort}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Résistant</span>
+    <span class="dots" data-attr="system.attributes.physical.resistant">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.physical.resistant this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.physical.resistant" value="{{document.system.attributes.physical.resistant}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Observateur</span>
+    <span class="dots" data-attr="system.attributes.physical.observateur">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.physical.observateur this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.physical.observateur" value="{{document.system.attributes.physical.observateur}}" min="1" max="6" />
+  </div>
+</div>

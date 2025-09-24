@@ -1,0 +1,39 @@
+<!-- Caractéristiques mentales, version moderne, puces interactives -->
+<div class="caracs-group">
+  <div class="carac-row">
+    <span class="carac-label">Charmeur</span>
+    <span class="dots" data-attr="system.attributes.mental.charmeur">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.mental.charmeur this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.mental.charmeur" value="{{document.system.attributes.mental.charmeur}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Rusé</span>
+    <span class="dots" data-attr="system.attributes.mental.ruse">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.mental.ruse this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.mental.ruse" value="{{document.system.attributes.mental.ruse}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Savant</span>
+    <span class="dots" data-attr="system.attributes.mental.savant">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.mental.savant this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.mental.savant" value="{{document.system.attributes.mental.savant}}" min="1" max="6" />
+  </div>
+  <div class="carac-row">
+    <span class="carac-label">Talentueux</span>
+    <span class="dots" data-attr="system.attributes.mental.talentueux">
+      {{#each (range 1 6)}}
+        <span class="dot {{#if (gte ../document.system.attributes.mental.talentueux this)}}filled{{/if}}" data-value="{{this}}"></span>
+      {{/each}}
+    </span>
+    <input type="number" name="system.attributes.mental.talentueux" value="{{document.system.attributes.mental.talentueux}}" min="1" max="6" />
+  </div>
+</div>

@@ -1,145 +1,129 @@
-<!-- Fiche de personnage minimaliste pour Foundry v13 -->
-<form class="{{cssClass}}" autocomplete="off">
-  <header class="sheet-header">
-    <h1><input name="system.nom" type="text" value="{{document.system.nom}}" placeholder="Nom du personnage"/></h1>
-  </header>
-  <section class="sheet-body">
-    <div>
-      <label>Points de vie :</label>
-      <input type="number" name="system.pv" value="{{document.system.pv}}" min="0" />
+<!-- Fiche de personnage moderne, format portrait, avec header, caractéristiques et onglets -->
+<form class="{{cssClass}} fiche-portrait" autocomplete="off">
+  <header class="sheet-header fiche-header">
+    <img class="profile-img" src="{{document.img}}" data-edit="img" title="Portrait" />
+    <div class="header-fields">
+      <h1><input name="system.nom" type="text" value="{{document.system.nom}}" placeholder="Nom du personnage"/></h1>
+      <div class="pv-block">
+        <label>PV</label>
+        <input type="number" name="system.pv" value="{{document.system.pv}}" min="0" />
+      </div>
     </div>
-    <div class="attributes">
+  </header>
+  <section class="sheet-body fiche-body">
+    <div class="attributes-modern">
       <h2>Caractéristiques</h2>
-      <div class="grid grid-2col">
-        <div class="attributes-group">
+      <div class="caracs-flex">
+        <div class="carac-col">
           <h3>Physiques</h3>
-          <div class="attribute">
-            <label>Agile</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.agile"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.agile"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.agile"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.agile"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.agile"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.agile 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.agile"></span>
-              <input type="number" name="system.attributes.physical.agile" value="{{document.system.attributes.physical.agile}}" min="1" max="6" style="width: 2.5em;" />
+          <!-- Caractéristiques physiques, version moderne, puces interactives -->
+          <div class="caracs-group">
+            <!-- Caractéristique Agile : simulation de puces avec input range -->
+            <div class="carac-row">
+              <span class="carac-label">Agile</span>
+              <div class="dots-range">
+                <input type="range" name="system.attributes.physical.agile" min="1" max="6" step="1" value="{{document.system.attributes.physical.agile}}" />
+                <div class="dots-bar"></div>
+              </div>
+              <input type="number" name="system.attributes.physical.agile" value="{{document.system.attributes.physical.agile}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Fort</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.fort"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.fort"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.fort"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.fort"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.fort"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.fort 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.fort"></span>
-              <input type="number" name="system.attributes.physical.fort" value="{{document.system.attributes.physical.fort}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Fort -->
+            <div class="carac-row">
+              <span class="carac-label">Fort</span>
+              <span class="dots" data-attr="system.attributes.physical.fort" data-value="{{document.system.attributes.physical.fort}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.physical.fort" value="{{document.system.attributes.physical.fort}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Résistant</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.resistant"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.resistant"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.resistant"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.resistant"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.resistant"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.resistant 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.resistant"></span>
-              <input type="number" name="system.attributes.physical.resistant" value="{{document.system.attributes.physical.resistant}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Résistant -->
+            <div class="carac-row">
+              <span class="carac-label">Résistant</span>
+              <span class="dots" data-attr="system.attributes.physical.resistant" data-value="{{document.system.attributes.physical.resistant}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.physical.resistant" value="{{document.system.attributes.physical.resistant}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Observateur</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.observateur"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.observateur"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.observateur"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.observateur"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.observateur"></span>
-              <span class="dot {{#if (gte document.system.attributes.physical.observateur 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.observateur"></span>
-              <input type="number" name="system.attributes.physical.observateur" value="{{document.system.attributes.physical.observateur}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Observateur -->
+            <div class="carac-row">
+              <span class="carac-label">Observateur</span>
+              <span class="dots" data-attr="system.attributes.physical.observateur" data-value="{{document.system.attributes.physical.observateur}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.physical.observateur" value="{{document.system.attributes.physical.observateur}}" min="1" max="6" />
             </div>
           </div>
         </div>
-        <div class="attributes-group">
+        <div class="carac-col">
           <h3>Mentales</h3>
-          <div class="attribute">
-            <label>Charmeur</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.charmeur"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.charmeur"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.charmeur"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.charmeur"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.charmeur"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.charmeur"></span>
-              <input type="number" name="system.attributes.mental.charmeur" value="{{document.system.attributes.mental.charmeur}}" min="1" max="6" style="width: 2.5em;" />
+          <!-- Caractéristiques mentales, version moderne, puces interactives -->
+          <div class="caracs-group">
+            <!-- Caractéristique Charmeur -->
+            <div class="carac-row">
+              <span class="carac-label">Charmeur</span>
+              <span class="dots" data-attr="system.attributes.mental.charmeur" data-value="{{document.system.attributes.mental.charmeur}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.mental.charmeur" value="{{document.system.attributes.mental.charmeur}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Rusé</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.ruse"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.ruse"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.ruse"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.ruse"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.ruse"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.ruse 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.ruse"></span>
-              <input type="number" name="system.attributes.mental.ruse" value="{{document.system.attributes.mental.ruse}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Rusé -->
+            <div class="carac-row">
+              <span class="carac-label">Rusé</span>
+              <span class="dots" data-attr="system.attributes.mental.ruse" data-value="{{document.system.attributes.mental.ruse}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.mental.ruse" value="{{document.system.attributes.mental.ruse}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Savant</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.savant"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.savant"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.savant"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.savant"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.savant"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.savant 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.savant"></span>
-              <input type="number" name="system.attributes.mental.savant" value="{{document.system.attributes.mental.savant}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Savant -->
+            <div class="carac-row">
+              <span class="carac-label">Savant</span>
+              <span class="dots" data-attr="system.attributes.mental.savant" data-value="{{document.system.attributes.mental.savant}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.mental.savant" value="{{document.system.attributes.mental.savant}}" min="1" max="6" />
             </div>
-          </div>
-          <div class="attribute">
-            <label>Talentueux</label>
-            <div style="display: flex; align-items: center; gap: 0.5em;">
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.talentueux"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.talentueux"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.talentueux"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.talentueux"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.talentueux"></span>
-              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.talentueux"></span>
-              <input type="number" name="system.attributes.mental.talentueux" value="{{document.system.attributes.mental.talentueux}}" min="1" max="6" style="width: 2.5em;" />
+            <!-- Caractéristique Talentueux -->
+            <div class="carac-row">
+              <span class="carac-label">Talentueux</span>
+              <span class="dots" data-attr="system.attributes.mental.talentueux" data-value="{{document.system.attributes.mental.talentueux}}">
+                {{#each (range 1 6)}}
+                  <span class="dot" data-index="{{this}}"></span>
+                {{/each}}
+              </span>
+              <input type="number" name="system.attributes.mental.talentueux" value="{{document.system.attributes.mental.talentueux}}" min="1" max="6" />
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="fiche-tabs">
+      <nav class="tabs" data-group="main-tabs">
+        <a class="item active" data-tab="competences">Compétences</a>
+        <a class="item" data-tab="equipement">Équipement</a>
+        <a class="item" data-tab="notes">Notes</a>
+      </nav>
+      <section class="tab-content">
+        <div class="tab active" data-tab="competences">
+          <p>À compléter : compétences du personnage…</p>
+        </div>
+        <div class="tab" data-tab="equipement">
+          <p>À compléter : équipement du personnage…</p>
+        </div>
+        <div class="tab" data-tab="notes">
+          <p>À compléter : notes et background…</p>
+        </div>
+      </section>
+    </div>
   </section>
-  <script>
-    // Gestion des puces interactives pour chaque caractéristique
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.dots').forEach(function(group) {
-        group.addEventListener('click', function(e) {
-          if (!e.target.classList.contains('dot')) return;
-          const value = Number(e.target.dataset.value);
-          const attr = group.dataset.attr;
-          // Met à jour le champ correspondant dans le formulaire
-          const form = group.closest('form');
-          if (form) {
-            let input = form.querySelector(`[name="${attr}"]`);
-            if (!input) {
-              input = document.createElement('input');
-              input.type = 'hidden';
-              input.name = attr;
-              form.appendChild(input);
-            }
-            input.value = value;
-            // Soumet le formulaire pour sauvegarder la valeur
-            form.requestSubmit();
-          }
-        });
-      });
-    });
-  </script>
 </form>
