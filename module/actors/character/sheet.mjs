@@ -24,20 +24,16 @@ export class CharacterSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   // Ajoute les listeners pour rendre les puces interactives
   activateListeners(html) {
     super.activateListeners(html);
-    // Diffère l'attachement des listeners pour garantir que le DOM est prêt
-      // Cible toutes les puces générées par le helper dots
-      html.find('.dot[data-attr]').css('cursor', 'pointer');
-      // Délégation d'événement sur le DOM de la fiche
-      html.on('click', '.dot[data-attr]', async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const dot = event.currentTarget;
-        const value = Number(dot.dataset.value);
-        const attr = dot.dataset.attr;
-        if (!attr) return;
-        await this.document.update({ [attr]: value });
-        // Force le rafraîchissement de la fiche pour mettre à jour les puces
-        this.render();
-      });
+    this.element.find('.dot[data-attr]').css('cursor', 'pointer');
+    this.element.on('click', '.dot[data-attr]', async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const dot = event.currentTarget;
+      const value = Number(dot.dataset.value);
+      const attr = dot.dataset.attr;
+      console.log('Dot clicked!', attr, value);
+      if (!attr) return;
+      await this.document.update({ [attr]: value });
+    });
   }
 }

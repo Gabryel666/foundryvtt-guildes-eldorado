@@ -16,28 +16,48 @@
           <div class="attribute">
             <label>Agile</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.physical.agile "system.attributes.physical.agile"}}}
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.agile"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.agile"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.agile"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.agile"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.agile"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.agile 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.agile"></span>
               <input type="number" name="system.attributes.physical.agile" value="{{document.system.attributes.physical.agile}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Fort</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.physical.fort "system.attributes.physical.fort"}}}
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.fort"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.fort"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.fort"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.fort"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.fort"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.fort 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.fort"></span>
               <input type="number" name="system.attributes.physical.fort" value="{{document.system.attributes.physical.fort}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Résistant</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.physical.resistant "system.attributes.physical.resistant"}}}
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.resistant"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.resistant"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.resistant"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.resistant"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.resistant"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.resistant 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.resistant"></span>
               <input type="number" name="system.attributes.physical.resistant" value="{{document.system.attributes.physical.resistant}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Observateur</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.physical.observateur "system.attributes.physical.observateur"}}}
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.physical.observateur"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.physical.observateur"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.physical.observateur"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.physical.observateur"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.physical.observateur"></span>
+              <span class="dot {{#if (gte document.system.attributes.physical.observateur 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.physical.observateur"></span>
               <input type="number" name="system.attributes.physical.observateur" value="{{document.system.attributes.physical.observateur}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
@@ -47,28 +67,48 @@
           <div class="attribute">
             <label>Charmeur</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.mental.charmeur "system.attributes.mental.charmeur"}}}
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.charmeur"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.charmeur"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.charmeur"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.charmeur"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.charmeur"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.charmeur 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.charmeur"></span>
               <input type="number" name="system.attributes.mental.charmeur" value="{{document.system.attributes.mental.charmeur}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Rusé</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.mental.ruse "system.attributes.mental.ruse"}}}
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.ruse"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.ruse"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.ruse"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.ruse"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.ruse"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.ruse 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.ruse"></span>
               <input type="number" name="system.attributes.mental.ruse" value="{{document.system.attributes.mental.ruse}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Savant</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.mental.savant "system.attributes.mental.savant"}}}
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.savant"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.savant"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.savant"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.savant"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.savant"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.savant 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.savant"></span>
               <input type="number" name="system.attributes.mental.savant" value="{{document.system.attributes.mental.savant}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
           <div class="attribute">
             <label>Talentueux</label>
             <div style="display: flex; align-items: center; gap: 0.5em;">
-              {{{dots document.system.attributes.mental.talentueux "system.attributes.mental.talentueux"}}}
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 1)}}filled{{/if}}" data-value="1" data-attr="system.attributes.mental.talentueux"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 2)}}filled{{/if}}" data-value="2" data-attr="system.attributes.mental.talentueux"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 3)}}filled{{/if}}" data-value="3" data-attr="system.attributes.mental.talentueux"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 4)}}filled{{/if}}" data-value="4" data-attr="system.attributes.mental.talentueux"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 5)}}filled{{/if}}" data-value="5" data-attr="system.attributes.mental.talentueux"></span>
+              <span class="dot {{#if (gte document.system.attributes.mental.talentueux 6)}}filled{{/if}}" data-value="6" data-attr="system.attributes.mental.talentueux"></span>
               <input type="number" name="system.attributes.mental.talentueux" value="{{document.system.attributes.mental.talentueux}}" min="1" max="6" style="width: 2.5em;" />
             </div>
           </div>
